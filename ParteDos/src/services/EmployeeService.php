@@ -33,6 +33,8 @@ class EmployeeService
 
     /**
      * @param string $id
+     * @return \stdClass
+     * @throws \Exception
      */
     public function getById(string $id)
     {
@@ -42,6 +44,8 @@ class EmployeeService
     /**
      * @param int $from
      * @param int $to
+     * @return array
+     * @throws \Exception
      */
     public function filterBySalary(int $from, int $to)
     {

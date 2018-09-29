@@ -30,13 +30,14 @@ class EmployeeApiController
     /**
      * @param Request $request
      * @param Response $response
+     * @throws \Exception
      */
     public function xml(Request $request, Response $response)
     {
-        $from = $request->getParam('from');
-        $to = $request->getParam('to');
+        $from = $request->getParam('from', 0);
+        $to = $request->getParam('to', $from);
 
-        $employees = json_decode(json_encode($this->employeeService->getAll()), true);
+        $employees = json_decode(json_encode($this->employeeService->filterBySalary($from, $to)), true);
 
         $xmlData = new \SimpleXMLElement('<?xml version="1.0"?><data></data>');
         $this->arrayToXml($employees, $xmlData);
