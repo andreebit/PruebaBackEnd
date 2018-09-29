@@ -1,2 +1,5 @@
 .idea
-ParteUno/vendor
+ParteUno/vendor/
+ParteDos/vendor/
+ParteDos/logs/*
+!ParteDos/logs/README.md
