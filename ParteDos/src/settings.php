@@ -15,5 +15,7 @@ return [
             'path' => isset($_ENV['docker']) ? 'php://stdout' : __DIR__ . '/../logs/app.log',
             'level' => \Monolog\Logger::DEBUG,
         ],
+
+        'employees_json_file' => __DIR__ . '/../storage/employees.json',
     ],
 ];

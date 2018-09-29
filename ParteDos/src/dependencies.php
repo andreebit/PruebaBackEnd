@@ -17,3 +17,21 @@ $container['logger'] = function ($c) {
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
     return $logger;
 };
+
+$container['EmployeeRepository'] = function ($c) {
+    $settings = $c->get('settings');
+    $collection = json_decode(file_get_contents($settings['employees_json_file']), true);
+    return new \App\Repositories\EmployeeRepository($collection);
+};
+
+$container['EmployeeService'] = function ($c) {
+    return new \App\Services\EmployeeService($c->get('EmployeeRepository'));
+};
+
+$container['EmployeeController'] = function ($c) {
+    return new \App\Controllers\EmployeeController($c->get('EmployeeService'), $c);
+};
+
+$container['EmployeeApiController'] = function ($c) {
+    return new \App\Controllers\EmployeeApiController($c->get('EmployeeService'), $c);
+};
