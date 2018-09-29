@@ -10,8 +10,8 @@ class ChangeString
 {
 
     /**
-        Es posible generar el alfabeto dinámicamente con range('a', 'z'),
-        pero para evitar problemas con la ñ, preferí usar constantes.
+     * Es posible generar el alfabeto dinámicamente con range('a', 'z'),
+     * pero para evitar problemas con la ñ, preferí usar constantes.
      */
     const ALPHABET = [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r',
