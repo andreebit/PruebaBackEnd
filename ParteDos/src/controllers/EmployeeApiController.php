@@ -36,7 +36,7 @@ class EmployeeApiController
         $from = $request->getParam('from');
         $to = $request->getParam('to');
 
-        $employees = $this->employeeService->getAll();
+        $employees = json_decode(json_encode($this->employeeService->getAll()), true);
 
         $xmlData = new \SimpleXMLElement('<?xml version="1.0"?><data></data>');
         $this->arrayToXml($employees, $xmlData);

@@ -1,38 +1,69 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Slim 3</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-        <style>
-            body {
-                margin: 50px 0 0 0;
-                padding: 0;
-                width: 100%;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                color: #aaa;
-                font-size: 18px;
-            }
+<head>
+    <meta charset="utf-8"/>
+    <title>Prueba BackEnd</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 50px 0 50px 0;
+            padding: 0;
+            width: 100%;
+            color: #aaa;
+            font-size: 18px;
+        }
+        h1 {
+            color: #719e40;
+            letter-spacing: -3px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 200;
+            margin-bottom: 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Empleados</h1>
 
-            h1 {
-                color: #719e40;
-                letter-spacing: -3px;
-                font-family: 'Lato', sans-serif;
-                font-size: 100px;
-                font-weight: 200;
-                margin-bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Slim</h1>
-        <div>a microframework for PHP</div>
+        <form class="form-inline" method="get" action="">
+            <label class="sr-only" for="emailFormField">Username</label>
+            <div class="input-group mb-2 mr-sm-2">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">@</div>
+                </div>
+                <input type="email" class="form-control" id="emailFormField" placeholder="Ingresa E-mail" name="q" value="<?php echo $query ?>">
+            </div>
+            <button type="submit" class="btn btn-info mb-2">Buscar</button>
+        </form>
 
-        <?php if (isset($name)) : ?>
-            <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-        <?php else: ?>
-            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
-        <?php endif; ?>
-    </body>
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Salario</th>
+                    <th scope="col">Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+            foreach ($employees as $employee) :
+            ?>
+                <tr>
+                    <td><?php echo $employee->name ?></td>
+                    <td><?php echo $employee->email ?></td>
+                    <td><?php echo $employee->position ?></td>
+                    <td><?php echo $employee->salary ?></td>
+                    <td><a class="btn btn-link" href="/empleados/<?php echo $employee->id ?>">Ver más</a></td>
+                </tr>
+            <?php
+            endforeach;
+            ?>
+            </tbody>
+        </table>
+    </div>
+</body>
 </html>

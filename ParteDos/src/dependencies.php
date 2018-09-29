@@ -20,7 +20,7 @@ $container['logger'] = function ($c) {
 
 $container['EmployeeRepository'] = function ($c) {
     $settings = $c->get('settings');
-    $collection = json_decode(file_get_contents($settings['employees_json_file']), true);
+    $collection = json_decode(file_get_contents($settings['employees_json_file']));
     return new \App\Repositories\EmployeeRepository($collection);
 };
 

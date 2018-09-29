@@ -1,38 +1,71 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <title>Slim 3</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-        <style>
-            body {
-                margin: 50px 0 0 0;
-                padding: 0;
-                width: 100%;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                color: #aaa;
-                font-size: 18px;
-            }
+<head>
+    <meta charset="utf-8"/>
+    <title><?php echo $employee->name ?></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        body {
+            margin: 50px 0 50px 0;
+            padding: 0;
+            width: 100%;
+            color: #aaa;
+            font-size: 18px;
+        }
+        h1 {
+            color: #719e40;
+            letter-spacing: -3px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 200;
+            margin-bottom: 0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1><?php echo $employee->name ?></h1>
 
-            h1 {
-                color: #719e40;
-                letter-spacing: -3px;
-                font-family: 'Lato', sans-serif;
-                font-size: 100px;
-                font-weight: 200;
-                margin-bottom: 0;
-            }
-        </style>
-    </head>
-    <body>
-        <h1>Slim</h1>
-        <div>a microframework for PHP</div>
-
-        <?php if (isset($name)) : ?>
-            <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-        <?php else: ?>
-            <p>Try <a href="http://www.slimframework.com">SlimFramework</a></p>
-        <?php endif; ?>
-    </body>
+    <table class="table table-striped">
+        <tbody>
+            <tr>
+                <th>Nombre</th>
+                <td><?php echo $employee->name ?></td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td><?php echo $employee->email ?></td>
+            </tr>
+            <tr>
+                <th>Teléfono</th>
+                <td><?php echo $employee->phone ?></td>
+            </tr>
+            <tr>
+                <th>Dirección</th>
+                <td><?php echo $employee->address ?></td>
+            </tr>
+            <tr>
+                <th>Cargo</th>
+                <td><?php echo $employee->position ?></td>
+            </tr>
+            <tr>
+                <th>Salario</th>
+                <td><?php echo $employee->salary ?></td>
+            </tr>
+            <tr>
+                <th>Habilidades</th>
+                <td>
+                    <ul>
+                    <?php
+                    foreach ($employee->skills as $skill) :
+                        echo '<li>' . $skill->skill . '</li>';
+                    endforeach;
+                    ?>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <di><a href="/" class="btn btn-link">Regresar</a></di>
+</body>
 </html>

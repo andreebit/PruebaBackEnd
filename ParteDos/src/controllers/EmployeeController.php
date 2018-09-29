@@ -33,28 +33,19 @@ class EmployeeController
      */
     public function index(Request $request, Response $response)
     {
-        $employees = $this->employeeService->getAll();
-        $this->container->renderer->render($response, 'index.phtml', ['employees' => $employees]);
-    }
-
-    /**
-     * @param Request $request
-     * @param Response $response
-     */
-    public function search(Request $request, Response $response)
-    {
-        $query = $request->getParam('q');
+        $query = $request->getParam('q', '');
         $employees = $this->employeeService->getAll($query);
-        $this->container->renderer->render($response, 'index.phtml', ['employees' => $employees]);
+        $this->container->renderer->render($response, 'index.phtml', ['employees' => $employees, 'query' => $query]);
     }
 
     /**
      * @param Request $request
      * @param Response $response
+     * @param $args
      */
-    public function detail(Request $request, Response $response)
+    public function detail(Request $request, Response $response, $args)
     {
-        $id = $request->getParam('id');
+        $id = $args['id'];
         $employee = $this->employeeService->getById($id);
         $this->container->renderer->render($response, 'detail.phtml', ['employee' => $employee]);
     }
