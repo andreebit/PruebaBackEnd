@@ -14,7 +14,7 @@ class ClearPar
 
     /**
      * @param string $string
-     * @return mixed|string
+     * @return string
      */
     public function build(string $string)
     {
