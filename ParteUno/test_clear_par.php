@@ -19,6 +19,10 @@ echo $clearPar->build('((()') . PHP_EOL;
 //Test case (((((()))
 echo $clearPar->build('(((((())(()') . PHP_EOL;
 
+//Test case (()()()()(()))))())((())
+echo $clearPar->build('(()()()()(()))))())((())') . PHP_EOL;
+
+
 //Test Exception: Solo se permiten paréntesis.
 try {
     $clearPar->build('((a()');

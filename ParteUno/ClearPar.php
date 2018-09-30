@@ -26,8 +26,7 @@ class ClearPar
 
             if (!is_null($acc)) {
                 $lastChar = substr($acc, strlen($acc) - 1);
-                if (($item == self::OPEN_PARENTHESIS && $lastChar == self::CLOSE_PARENTHESIS)
-                    || ($item == self::CLOSE_PARENTHESIS && $lastChar == self::OPEN_PARENTHESIS)) {
+                if ($item != $lastChar) {
                     $acc .= $item;
                 }
             } else {
