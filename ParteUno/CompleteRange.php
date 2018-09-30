@@ -16,10 +16,6 @@ class CompleteRange
      */
     public function build(array $collection)
     {
-        if (count($collection) < 2) {
-            throw new \Exception('Se necesitan al menos dos números enteros.');
-        }
-
         $previous = 0;
         $resultArray = array_filter($collection, function ($item) use (&$previous) {
             if (!is_int($item)) {
@@ -37,6 +33,10 @@ class CompleteRange
             $previous = $item;
             return true;
         });
+
+        if (count($resultArray) < 2) {
+            throw new \Exception('Se necesitan al menos dos números enteros.');
+        }
 
         $min = $resultArray[0];
         $max = end($resultArray);
