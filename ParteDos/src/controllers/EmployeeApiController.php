@@ -30,6 +30,7 @@ class EmployeeApiController
     /**
      * @param Request $request
      * @param Response $response
+     * @return Response
      * @throws \Exception
      */
     public function xml(Request $request, Response $response)
@@ -39,10 +40,10 @@ class EmployeeApiController
 
         $employees = json_decode(json_encode($this->employeeService->filterBySalary($from, $to)), true);
 
-        $xmlData = new \SimpleXMLElement('<?xml version="1.0"?><data></data>');
+        $xmlData = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><data></data>');
         $this->arrayToXml($employees, $xmlData);
 
-        echo $xmlData->asXML();
+        return $response->withHeader('Content-Type', 'text/xml')->write($xmlData->asXML());
     }
 
     /**

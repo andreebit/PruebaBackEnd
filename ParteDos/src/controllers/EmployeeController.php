@@ -42,6 +42,7 @@ class EmployeeController
      * @param Request $request
      * @param Response $response
      * @param $args
+     * @throws \Exception
      */
     public function detail(Request $request, Response $response, $args)
     {
