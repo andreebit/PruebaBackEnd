@@ -31,7 +31,7 @@ class CompleteRange
             }
 
             if ($item <= $previous) {
-                throw new \Exception('Solo se permiten números ordenados enteros correlativamente.');
+                throw new \Exception('Solo se permiten números enteros ordenados correlativamente.');
             }
 
             $previous = $item;
