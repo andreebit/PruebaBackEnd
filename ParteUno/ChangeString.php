@@ -20,9 +20,9 @@ class ChangeString
     ];
 
     const ALPHABET_REPLACE = [
-        'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r',
-        's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-        'L', 'M', 'N', 'Ñ', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A'
+        'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'ñ', 'o', 'p', 'q', 'r', 's',
+        't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+        'M', 'N', 'Ñ', 'O', 'P', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'A'
     ];
 
     /**
@@ -31,6 +31,7 @@ class ChangeString
      */
     public function build(string $string)
     {
-        return $string = strtr($string, array_combine(self::ALPHABET, self::ALPHABET_REPLACE));
+        $keyValue = array_combine(self::ALPHABET, self::ALPHABET_REPLACE);
+        return $string = strtr($string, $keyValue);
     }
 }
