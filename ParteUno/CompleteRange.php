@@ -11,7 +11,7 @@ class CompleteRange
 
     /**
      * @param array $collection
-     * @return string
+     * @return array
      * @throws \Exception
      */
     public function build(array $collection)
